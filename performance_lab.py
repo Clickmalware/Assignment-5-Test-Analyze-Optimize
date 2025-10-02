@@ -6,9 +6,22 @@
 # Input: [1, 3, 2, 3, 4, 1, 3]
 # Output: 3
 
+from collections import Counter
+numbers = [1, 3, 2, 3, 4, 1, 3]
+
 def most_frequent(numbers):
-    # Your code here
-    pass
+    #check for empty list and non-integer values
+    if not numbers:
+        raise TypeError("List must not be empty")
+    if not all(isinstance(n, int) for n in numbers):
+        raise TypeError("List must contain only integers")
+    #initialize counter and find most common element
+    counter = Counter(numbers)
+    most_common, _ = counter.most_common(1)[0]
+    return most_common
+#run a test for the code above
+print(most_frequent(numbers))  # Output: 3
+
 
 """
 Time and Space Analysis for problem 1:
@@ -29,8 +42,18 @@ Time and Space Analysis for problem 1:
 # Output: [4, 5, 6, 7]
 
 def remove_duplicates(nums):
-    # Your code here
-    pass
+    #check for empty list and non-list input
+    if not isinstance(nums, list):
+        raise TypeError("Input must be a list")
+    #initialize set and result list
+    seen = set()
+    result = []
+    for x in nums:
+        if x not in seen:
+            seen.add(x)
+            result.append(x)
+    # return the result list without duplicates
+    return result
 
 """
 Time and Space Analysis for problem 2:
